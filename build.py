@@ -38,6 +38,22 @@ def money(n):
     return f"{CUR}{n:,}"
 
 
+NUMWORDS = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six",
+            7: "seven", 8: "eight", 9: "nine", 10: "ten"}
+
+
+def count_word(cap=False):
+    """The package count, spelled out.
+
+    Hard-coding "six packages" in the hero meant that dropping a package left
+    three separate places on the home page quietly lying. Anything that states
+    the count now derives it.
+    """
+    n = len(PACKAGES)
+    w = NUMWORDS.get(n, str(n))
+    return w.capitalize() if cap else w
+
+
 def pay_link(p, fallback_prefix=""):
     """A package's checkout destination.
 
@@ -248,7 +264,7 @@ def home():
         "No sales calls",
         "Pay by card",
         "Delivered on a date",
-        "Six packages",
+        f"{count_word(cap=True)} packages",
         "Start this week",
     ]
     ticker = "".join(f"<span>{e(w)}</span>" for w in ticker_words)
@@ -302,11 +318,11 @@ def home():
     <div>
       <p class="eyebrow" data-boot="1">{e(S["tagline"])}</p>
       <h1 data-boot="2">Marketing that is <em>already built.</em><br>Pick it, pay it, run it.</h1>
-      <p class="lede" data-boot="3">Six packages with the price on the front and the deliverables
+      <p class="lede" data-boot="3">{count_word(cap=True)} packages with the price on the front and the deliverables
         written down. No discovery call, no proposal deck, no three weeks waiting on a quote.</p>
       <div class="hero__actions" data-boot="4" style="margin-top:2rem">
         <a class="btn btn--signal" href="#packages" data-track="hero_cta_click" data-where="hero">
-          <span>See the six packages</span> <span class="arr">→</span>
+          <span>See the {count_word()} packages</span> <span class="arr">→</span>
         </a>
         <a class="btn btn--ghost" href="#process" data-track="hero_secondary_click"><span>How it works</span></a>
       </div>
