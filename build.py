@@ -16,6 +16,7 @@ import html
 import json
 import os
 import re
+import sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.join(ROOT, "site")
@@ -32,6 +33,35 @@ BASE = S["domain"].rstrip("/")
 CUR = S["currency"]
 
 e = html.escape
+
+# --- themes ----------------------------------------------------------------
+# A theme is purely presentational: a stylesheet layered on top of style.css,
+# the two faces worth preloading, and the palette the artwork is drawn in.
+# The markup is identical across themes, which is what keeps the layout fixed
+# while the look changes.
+THEMES = {
+    "paper": {
+        "label": "Paper",
+        "css": [],                       # style.css alone
+        "preload": ["bricolage-normal", "newsreader-normal"],
+        "art": "paper",
+        "theme_color": "#f6f3ec",
+    },
+    "studio": {
+        "label": "Studio",
+        "css": ["theme-studio.css"],
+        "preload": ["gabarito-normal", "instrument-normal"],
+        "art": "studio",
+        "theme_color": "#0d0e11",
+    },
+}
+
+THEME = "paper"
+NOINDEX = False
+
+
+def T():
+    return THEMES[THEME]
 
 
 def money(n):
@@ -75,13 +105,13 @@ def fonts(prefix):
     The two faces that render above the fold are preloaded; the rest arrive with
     the stylesheet. No request ever leaves the site's own domain.
     """
-    return (
-        f'<link rel="preload" href="{prefix}assets/fonts/bricolage-normal.woff2" as="font" '
+    pre = "".join(
+        f'<link rel="preload" href="{prefix}assets/fonts/{face}.woff2" as="font" '
         'type="font/woff2" crossorigin>'
-        f'<link rel="preload" href="{prefix}assets/fonts/newsreader-normal.woff2" as="font" '
-        'type="font/woff2" crossorigin>'
-        f'<link rel="stylesheet" href="{prefix}assets/css/fonts.css">'
+        for face in T()["preload"]
     )
+    return pre + f'<link rel="stylesheet" href="{prefix}assets/css/fonts.css">'
+
 
 ANALYTICS = """<!-- ANALYTICS
      Paste your GA4 or Plausible snippet here and every button on the site
@@ -100,13 +130,17 @@ ANALYTICS = """<!-- ANALYTICS
 
 def head(title, desc, path, prefix, extra_ld=""):
     canonical = f"{BASE}/{path}" if path else f"{BASE}/"
+    robots = "noindex, nofollow" if NOINDEX else "index, follow, max-image-preview:large"
+    theme_css = "".join(
+        f'<link rel="stylesheet" href="{prefix}assets/css/{c}">' for c in T()["css"]
+    )
     return f"""<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)}</title>
 <meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{canonical}">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="theme-color" content="#f6f3ec">
+<meta name="robots" content="{robots}">
+<meta name="theme-color" content="{T()["theme_color"]}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{e(BRAND_FULL)}">
 <meta property="og:title" content="{e(title)}">
@@ -117,7 +151,7 @@ def head(title, desc, path, prefix, extra_ld=""):
 <meta name="twitter:description" content="{e(desc)}">
 <link rel="icon" href="{prefix}assets/img/favicon.svg" type="image/svg+xml">
 {fonts(prefix)}
-<link rel="stylesheet" href="{prefix}assets/css/style.css">
+<link rel="stylesheet" href="{prefix}assets/css/style.css">{theme_css}
 {extra_ld}
 {ANALYTICS}"""
 
@@ -372,7 +406,7 @@ def home():
     <div class="sec__head" style="margin-bottom:2.5rem">
       <div>
         <p class="eyebrow">By the numbers</p>
-        <h2 style="color:var(--paper)">Boring, measurable, repeatable</h2>
+        <h2>Boring, measurable, repeatable</h2>
       </div>
     </div>
     <div class="proof__grid">{stats}</div>
@@ -718,7 +752,8 @@ def sitemap():
 
 
 def robots():
-    return f"User-agent: *\nAllow: /\nDisallow: /packages/checkout.html\n\nSitemap: {BASE}/sitemap.xml\n"
+    return (f"User-agent: *\nAllow: /\nDisallow: /packages/checkout.html\n"
+            f"Disallow: /alt/\n\nSitemap: {BASE}/sitemap.xml\n")
 
 
 # --- write ----------------------------------------------------------------
@@ -761,9 +796,48 @@ def prune():
     return gone
 
 
-def main():
+def copy_shared_assets():
+    """Mirror css / js / fonts into this build's output directory.
+
+    Each theme build is self-contained so it can be served from its own folder
+    without reaching back up a level for shared files.
+    """
+    import shutil
+    src_root = os.path.join(ROOT, "site", "assets")
+    dst_root = os.path.join(SITE, "assets")
+    if os.path.abspath(src_root) == os.path.abspath(dst_root):
+        return
+    for sub in ("css", "js", "fonts"):
+        src, dst = os.path.join(src_root, sub), os.path.join(dst_root, sub)
+        if os.path.isdir(dst):
+            shutil.rmtree(dst)
+        shutil.copytree(src, dst)
+
+
+def main(argv=None):
+    global SITE, PKGDIR, BASE, THEME, NOINDEX
     import gen_art
-    gen_art.build(PACKAGES)
+
+    argv = list(sys.argv[1:] if argv is None else argv)
+    while argv:
+        a = argv.pop(0)
+        if a == "--theme":
+            THEME = argv.pop(0)
+            if THEME not in THEMES:
+                sys.exit(f"unknown theme {THEME!r}; choose from {', '.join(THEMES)}")
+        elif a == "--out":
+            SITE = os.path.abspath(argv.pop(0))
+            PKGDIR = os.path.join(SITE, "packages")
+        elif a == "--base":
+            BASE = argv.pop(0).rstrip("/")
+        elif a == "--noindex":
+            NOINDEX = True
+        else:
+            sys.exit(f"unknown argument {a!r}")
+
+    print(f"theme={THEME} out={os.path.relpath(SITE, ROOT)} noindex={NOINDEX}")
+    copy_shared_assets()
+    gen_art.build(PACKAGES, os.path.join(SITE, "assets", "img"), T()["art"])
     prune()
 
     w(os.path.join(SITE, "index.html"), home())

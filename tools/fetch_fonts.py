@@ -58,6 +58,21 @@ FAMILIES = [
         "faces": [("normal", "400 500")],
         "pin": {},
     },
+    # --- studio theme ---------------------------------------------------
+    {
+        "key": "gabarito",
+        "family": "Gabarito",
+        "query": "Gabarito:wght@400..900",
+        "faces": [("normal", "400 900")],
+        "pin": {},
+    },
+    {
+        "key": "instrument",
+        "family": "Instrument Sans",
+        "query": "Instrument+Sans:ital,wght@0,400..700;1,400..700",
+        "faces": [("normal", "400 700"), ("italic", "400 700")],
+        "pin": {},
+    },
 ]
 
 LATIN_RANGE = "U+0000-00FF"  # the block Google labels "latin"

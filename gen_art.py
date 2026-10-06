@@ -13,12 +13,36 @@ import random
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "site", "assets", "img")
 os.makedirs(OUT, exist_ok=True)
 
-PAPER = "#efeade"
-INK = "#141310"
-SIGNAL = "#e8431f"
-DEEP = "#16302f"
-MINT = "#a8d8c8"
-RULE = "#d8d1c2"
+# One palette per site theme. The artwork has to agree with the stylesheet —
+# paper-coloured SVGs on the dark theme read as broken white boxes.
+PALETTES = {
+    "paper": {
+        "PAPER": "#efeade", "INK": "#141310", "SIGNAL": "#e8431f",
+        "DEEP": "#16302f", "MINT": "#a8d8c8", "RULE": "#d8d1c2",
+        "GROUND": "#141310", "MARK": "#efeade", "GRAIN": 0.10,
+    },
+    "studio": {
+        "PAPER": "#15171c", "INK": "#f3f4f1", "SIGNAL": "#c8f44f",
+        "DEEP": "#0d0e11", "MINT": "#8fe3c4", "RULE": "#272b32",
+        "GROUND": "#0a0b0e", "MARK": "#f3f4f1", "GRAIN": 0.05,
+    },
+}
+
+# module-level names the drawing functions read; set by build()
+PAPER = INK = SIGNAL = DEEP = MINT = RULE = GROUND = MARK = ""
+GRAIN_OPACITY = 0.10
+
+
+def use_palette(name):
+    global PAPER, INK, SIGNAL, DEEP, MINT, RULE, GROUND, MARK, GRAIN_OPACITY
+    pal = PALETTES[name]
+    PAPER, INK, SIGNAL = pal["PAPER"], pal["INK"], pal["SIGNAL"]
+    DEEP, MINT, RULE = pal["DEEP"], pal["MINT"], pal["RULE"]
+    GROUND, MARK = pal["GROUND"], pal["MARK"]
+    GRAIN_OPACITY = pal["GRAIN"]
+
+
+use_palette("paper")
 
 GRAIN = (
     '<filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.85" '
@@ -34,7 +58,7 @@ def frame(w, h, body, extra_defs=""):
         f"<defs>{GRAIN}{extra_defs}</defs>"
         f'<rect width="{w}" height="{h}" fill="{PAPER}"/>'
         f"{body}"
-        f'<rect width="{w}" height="{h}" filter="url(#g)" opacity="0.1"/>'
+        f'<rect width="{w}" height="{h}" filter="url(#g)" opacity="{GRAIN_OPACITY}"/>'
         "</svg>"
     )
 
@@ -119,7 +143,7 @@ def style_blobs(w, h, rnd):
         y = h * (0.08 + i * 0.105)
         out.append(
             f'<line x1="0" y1="{y:.0f}" x2="{w}" y2="{y:.0f}" '
-            f'stroke="{PAPER}" stroke-width="1" opacity="0.14"/>'
+            f'stroke="{MARK}" stroke-width="1" opacity="0.14"/>'
         )
     return "".join(out), "".join(defs)
 
@@ -147,13 +171,13 @@ def style_squares(w, h, rnd):
 def style_burst(w, h, rnd):
     """Rays from a low-left origin — reach, distribution, broadcast."""
     cx, cy = w * 0.08, h * 1.02
-    out = [f'<rect width="{w}" height="{h}" fill="{INK}"/>']
+    out = [f'<rect width="{w}" height="{h}" fill="{GROUND}"/>']
     for i in range(46):
         a = math.radians(-88 + i * 1.92)
         L = max(w, h) * 1.7
         x2 = cx + math.cos(a) * L
         y2 = cy + math.sin(a) * L
-        col = SIGNAL if i % 7 == 3 else (MINT if i % 11 == 5 else PAPER)
+        col = SIGNAL if i % 7 == 3 else (MINT if i % 11 == 5 else MARK)
         op = 0.9 if i % 7 == 3 else rnd.uniform(0.08, 0.3)
         out.append(
             f'<line x1="{cx:.0f}" y1="{cy:.0f}" x2="{x2:.0f}" y2="{y2:.0f}" '
@@ -177,15 +201,16 @@ def render(slug, index, w, h):
     return frame(w, h, body, defs)
 
 
-def build(packages):
+def build(packages, outdir=None, palette="paper"):
+    outdir = outdir or OUT
+    os.makedirs(outdir, exist_ok=True)
+    use_palette(palette)
     for i, p in enumerate(packages):
-        card = render(p["slug"], i, 1200, 750)
-        wide = render(p["slug"], i, 1600, 760)
-        with open(os.path.join(OUT, f"{p['slug']}-card.svg"), "w") as f:
-            f.write(card)
-        with open(os.path.join(OUT, f"{p['slug']}-wide.svg"), "w") as f:
-            f.write(wide)
-    print(f"artwork: {len(packages)*2} svg files -> {OUT}")
+        with open(os.path.join(outdir, f"{p['slug']}-card.svg"), "w") as f:
+            f.write(render(p["slug"], i, 1200, 750))
+        with open(os.path.join(outdir, f"{p['slug']}-wide.svg"), "w") as f:
+            f.write(render(p["slug"], i, 1600, 760))
+    print(f"  artwork: {len(packages)*2} svg ({palette}) -> {outdir}")
 
 
 if __name__ == "__main__":
