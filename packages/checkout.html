@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout | Northline Studio</title>
+<meta name="description" content="Secure payment hand-off for your chosen marketing package.">
+<link rel="canonical" href="https://anirudhatalmale6-alt.github.io/marketing-packages-preview/packages/checkout.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#f6f3ec">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Northline Studio">
+<meta property="og:title" content="Checkout | Northline Studio">
+<meta property="og:description" content="Secure payment hand-off for your chosen marketing package.">
+<meta property="og:url" content="https://anirudhatalmale6-alt.github.io/marketing-packages-preview/packages/checkout.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Checkout | Northline Studio">
+<meta name="twitter:description" content="Secure payment hand-off for your chosen marketing package.">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/bricolage-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="../assets/fonts/newsreader-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<!-- ANALYTICS
+     Paste your GA4 or Plausible snippet here and every button on the site
+     starts reporting automatically — the tracking calls in main.js detect
+     whichever one is present. Nothing else needs changing.
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+-->
+</head>
+<body>
+<header class="site-head">
+  <div class="site-head__in">
+    <a class="brand" href="../index.html">
+      <b>Northline</b><i></i><small>Studio</small>
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="../index.html#packages">Packages</a>
+      <a href="../index.html#process">How it works</a>
+      <a href="../index.html#proof">Results</a>
+      <a href="../index.html#faq">Questions</a>
+    </nav>
+    <a class="btn head-cta" href="../index.html#packages"
+       data-track="nav_cta_click" data-where="header"><span>Browse packages</span></a>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+  <p class="crumb"><a href="../index.html">Home</a> / Checkout</p>
+</div>
+<section class="pkg-hero">
+  <div class="wrap">
+    <p class="eyebrow">Payment step</p>
+    <h1 id="pkg-title">Checkout</h1>
+    <p class="lede" id="pkg-sub">This is the hand-off point to the payment provider.</p>
+  </div>
+</section>
+<div class="wrap" style="padding-bottom:4rem;max-width:56rem">
+  <div class="prose">
+    <blockquote><b>Demo note for the site owner:</b> this page stands in for your live payment
+      link. Paste your Stripe, PayPal or Paddle link into <code>payLink</code> for the package in
+      <code>data/packages.json</code>, rebuild, and every Buy button on the site goes straight to a
+      real hosted checkout instead of here. Nothing else needs changing.</blockquote>
+    <h2>What the live flow looks like</h2>
+    <p>Customer clicks <em>Buy now</em> on a package, lands on the provider's secure hosted
+      checkout page with the amount and package name already filled in, pays by card, and is
+      returned to a thank-you page on this site. The provider emails the receipt. You get the
+      notification. No cart, no account, no extra steps.</p>
+    <h2>Packages and prices currently live</h2>
+    <ul class="deliver"><li><b>01</b><span>Launch Kit — $395 one-off project</span></li><li><b>02</b><span>Growth Engine — $780 per month</span></li><li><b>03</b><span>Paid Ads Sprint — $1,250 6-week sprint</span></li><li><b>04</b><span>Local Visibility — $540 one-off project</span></li><li><b>05</b><span>Conversion Rebuild — $1,680 one-off project</span></li><li><b>06</b><span>Full Funnel — $2,450 per month</span></li></ul>
+    <p style="margin-top:2rem">
+      <a class="btn btn--ghost" href="../index.html#packages"><span>Back to the catalogue</span></a>
+      <a class="btn btn--signal" href="../thank-you.html" style="margin-left:.5rem"
+         data-track="demo_payment_simulated"><span>Simulate a successful payment</span> <span class="arr">→</span></a>
+    </p>
+  </div>
+</div>
+<script>
+(function () {
+  var packages = {"launch-kit":{"name":"Launch Kit","price":"$395","note":"one-off project"},"growth-engine":{"name":"Growth Engine","price":"$780","note":"per month"},"paid-ads-sprint":{"name":"Paid Ads Sprint","price":"$1,250","note":"6-week sprint"},"local-visibility":{"name":"Local Visibility","price":"$540","note":"one-off project"},"conversion-rebuild":{"name":"Conversion Rebuild","price":"$1,680","note":"one-off project"},"full-funnel":{"name":"Full Funnel","price":"$2,450","note":"per month"}};
+  var slug = new URLSearchParams(location.search).get('pkg');
+  var p = packages[slug];
+  if (p) {
+    document.getElementById('pkg-title').textContent = p.name;
+    document.getElementById('pkg-sub').textContent = p.price + ' ' + p.note +
+      ' — this is where the live payment link takes over.';
+    document.title = 'Checkout: ' + p.name;
+  }
+})();
+</script>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <div class="foot__brand">Northline Studio</div>
+        <p>Ready-made marketing packages — priced in public, delivered on a date.</p>
+      </div>
+      <div>
+        <h4>Packages</h4>
+        <ul><li><a href="../packages/launch-kit.html">Launch Kit</a></li><li><a href="../packages/growth-engine.html">Growth Engine</a></li><li><a href="../packages/paid-ads-sprint.html">Paid Ads Sprint</a></li><li><a href="../packages/local-visibility.html">Local Visibility</a></li><li><a href="../packages/conversion-rebuild.html">Conversion Rebuild</a></li><li><a href="../packages/full-funnel.html">Full Funnel</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../index.html#process">How it works</a></li>
+          <li><a href="../index.html#proof">Results</a></li>
+          <li><a href="../index.html#faq">Questions</a></li>
+          <li><a href="../index.html#contact">Get in touch</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="../terms.html">Terms</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__base">
+      <span>&copy; <span id="year">2026</span> Northline Studio</span>
+      <span>Secure card payments</span>
+    </div>
+  </div>
+</footer>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /packages/checkout.html
+
+Sitemap: https://anirudhatalmale6-alt.github.io/marketing-packages-preview/sitemap.xml
