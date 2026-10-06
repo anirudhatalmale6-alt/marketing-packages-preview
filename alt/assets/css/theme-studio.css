@@ -1,0 +1,204 @@
+/* ==========================================================================
+   Mainstream Media — "Studio" theme
+   Loads AFTER style.css and changes only the look, never the layout:
+   dark warm-neutral ground, electric lime accent, geometric sans throughout,
+   soft panels and rounded geometry in place of the hairline paper grid.
+   ========================================================================== */
+
+:root {
+  /* ground + text */
+  --paper:      #0d0e11;   /* page */
+  --paper-2:    #15171c;   /* raised surface */
+  --ink:        #f3f4f1;   /* primary text */
+  --ink-soft:   #aeb3b0;
+  --ink-mute:   #787e7c;
+  --rule:       #272b32;
+
+  /* accent */
+  --signal:     #c8f44f;
+  --signal-ink: #d9ff72;
+
+  /* supporting */
+  --deep:       #191d22;
+  --deep-2:     #101317;
+  --mint:       #8fe3c4;
+
+  /* on this theme the accent is light, so anything sitting ON it must be dark */
+  --on-signal:  #0d0e11;
+  /* the dark bands are already dark here, so their text is the light ink */
+  --on-dark:    #f3f4f1;
+
+  --font-display: "Gabarito", "Trebuchet MS", sans-serif;
+  --font-body:    "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "Courier New", monospace;
+
+  --radius:     14px;
+  --radius-sm:  10px;
+}
+
+body {
+  font-size: clamp(1rem, .95rem + .22vw, 1.09rem);
+  line-height: 1.6;
+  letter-spacing: -.003em;
+}
+h1, h2, h3, h4 { font-weight: 800; letter-spacing: -.03em; }
+
+/* The paper grain multiplied against bone stock. On a near-black ground
+   multiply does nothing visible, so lift it with screen at a lower opacity. */
+body::after {
+  mix-blend-mode: screen;
+  opacity: .07;
+}
+
+/* --- buttons ------------------------------------------------------------- */
+.btn {
+  border-radius: 999px;
+  font-weight: 500;
+  padding: 1em 1.6em;
+}
+.btn:hover, .btn:focus-visible { color: var(--on-signal); border-color: var(--signal); }
+.btn--ghost { border-color: var(--rule); }
+.btn--ghost:hover { border-color: var(--signal); }
+.btn--signal { --fg: var(--on-signal); }
+.btn--signal::before { background: var(--ink); }
+.btn--signal:hover { color: var(--on-signal); border-color: var(--ink); }
+.btn--block { border-radius: var(--radius-sm); }
+
+/* --- header -------------------------------------------------------------- */
+.site-head { background: color-mix(in srgb, var(--paper) 82%, transparent); }
+.brand i { box-shadow: 0 0 0 4px color-mix(in srgb, var(--signal) 18%, transparent); }
+.burger { border-color: var(--rule); border-radius: 8px; }
+
+/* --- hero ---------------------------------------------------------------- */
+.hero::before {
+  background:
+    radial-gradient(circle at 34% 32%, color-mix(in srgb, var(--signal) 16%, transparent), transparent 60%),
+    radial-gradient(circle at 66% 68%, color-mix(in srgb, var(--mint) 12%, transparent), transparent 58%);
+  filter: blur(70px);
+  opacity: .5;
+}
+.hero h1 em {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 400;
+  color: var(--signal);
+  letter-spacing: -.03em;
+}
+.hero__facts { border-top-color: var(--signal); }
+
+/* --- ticker -------------------------------------------------------------- */
+/* style.css paints this with --ink, which is near-white here. Keep it dark and
+   let the accent do the work instead of flashing a white band mid-page. */
+.ticker {
+  background: var(--paper-2);
+  color: var(--ink-soft);
+  border-block-color: var(--rule);
+}
+
+/* --- catalogue ----------------------------------------------------------- */
+/* the paper theme fakes dividers with a 1px grid gap; here the cards are
+   discrete panels instead */
+.cards {
+  gap: 1rem;
+  background: transparent;
+  border: 0;
+}
+.card {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  transition: background .35s var(--ease), border-color .35s var(--ease), transform .35s var(--ease);
+}
+.card:hover {
+  background: #191c22;
+  border-color: color-mix(in srgb, var(--signal) 40%, var(--rule));
+  transform: translateY(-3px);
+}
+.card__art { border-radius: var(--radius-sm); border-color: var(--rule); background: var(--deep); }
+.card__tag { color: var(--on-signal); border-radius: 999px; font-weight: 500; }
+.card__tag--quiet { background: var(--rule); color: var(--ink-soft); }
+.card__foot { border-top-color: var(--rule); border-top-width: 1px; }
+.card__inc { border-top-color: var(--rule); }
+.card__links .buy {
+  background: var(--signal); color: var(--on-signal);
+  border-radius: 999px; font-weight: 500;
+}
+.card__links .buy:hover { background: var(--ink); color: var(--on-signal); }
+.card__links .go { color: var(--signal); }
+.card__links .go:hover { color: var(--ink); }
+
+/* --- steps --------------------------------------------------------------- */
+.steps { gap: 1rem; background: transparent; border-top: 0; }
+.step {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.step b { -webkit-text-stroke: 1.5px var(--signal); }
+
+/* --- proof band ---------------------------------------------------------- */
+.proof { background: var(--paper-2); border-block: 1px solid var(--rule); }
+.proof__n { color: var(--signal); }
+
+/* --- quotes -------------------------------------------------------------- */
+.quote { border-top-color: var(--signal); }
+.quote blockquote { font-style: normal; }
+.quote blockquote::before { color: var(--signal); }
+
+/* --- faq ----------------------------------------------------------------- */
+.faq, .faq details { border-color: var(--rule); }
+
+/* --- closing cta --------------------------------------------------------- */
+/* --ink is near-white on this theme, so the inherited rule would paint a glaring
+   white slab. Use the raised surface and let the lime glow carry it. */
+.cta { background: var(--paper-2); color: var(--ink); border-block: 1px solid var(--rule); }
+.cta::before { background: radial-gradient(circle, color-mix(in srgb, var(--signal) 26%, transparent), transparent 65%); }
+.cta p { color: var(--ink-soft); }
+.cta .btn { --bg: var(--signal); --fg: var(--on-signal); border-color: var(--signal); }
+.cta .btn::before { background: var(--ink); }
+
+/* --- footer -------------------------------------------------------------- */
+.site-foot { background: var(--deep-2); border-top: 1px solid var(--rule); color: var(--ink-soft); }
+.site-foot a:hover { color: var(--signal); }
+.foot__brand { color: var(--ink); }
+
+/* --- package page -------------------------------------------------------- */
+.pkg-hero__no { -webkit-text-stroke: 2px var(--signal); }
+.pkg-shot { border-radius: var(--radius); border-color: var(--rule); background: var(--deep); }
+.prose blockquote { border-left-color: var(--signal); font-style: normal; color: var(--ink); }
+
+.deliver { gap: .5rem; background: transparent; border: 0; }
+.deliver li {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+}
+.deliver li b { color: var(--signal); }
+
+.buybox {
+  border-color: var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--paper-2);
+}
+.buybox__top { background: var(--deep); color: var(--ink); border-bottom: 1px solid var(--rule); }
+.buybox__price sub { color: var(--signal); }
+.buybox__body li::before { color: var(--signal); }
+.buybox__secure { border-top-color: var(--rule); }
+
+.more { border-top-color: var(--rule); }
+.more__list { gap: .75rem; background: transparent; border: 0; }
+.more__list a {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  transition: border-color .3s var(--ease), background .3s var(--ease);
+}
+.more__list a:hover { background: #191c22; border-color: color-mix(in srgb, var(--signal) 40%, var(--rule)); }
+.more__list em { color: var(--signal); }
+
+.crumb a:hover { color: var(--signal); }
+
+/* --- forms / focus ------------------------------------------------------- */
+:where(a, button, summary, input):focus-visible { outline-color: var(--signal); }
+::selection { background: var(--signal); color: var(--on-signal); }
