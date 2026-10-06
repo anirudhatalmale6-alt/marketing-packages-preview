@@ -1,4 +1,4 @@
-/* Northline Studio — site behaviour. No dependencies, no external requests. */
+/* Mainstream Media — site behaviour. No dependencies, no external requests. */
 (function () {
   'use strict';
 
