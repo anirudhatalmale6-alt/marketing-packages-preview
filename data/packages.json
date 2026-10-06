@@ -1,7 +1,7 @@
 {
   "site": {
-    "brand": "Northline",
-    "brandSuffix": "Studio",
+    "brand": "Mainstream",
+    "brandSuffix": "Media",
     "tagline": "Ready-made marketing packages",
     "domain": "https://anirudhatalmale6-alt.github.io/marketing-packages-preview",
     "email_label": "Use the enquiry form",
@@ -26,17 +26,39 @@
         "12 social templates (Canva)"
       ],
       "deliverables": [
-        ["01", "A one-page positioning note — who you are for, what you promise, and the words to say it in."],
-        ["02", "Primary logo plus stacked and icon variants, supplied as SVG, PNG and PDF."],
-        ["03", "A colour palette and type pairing with hex codes and usage rules."],
-        ["04", "Twelve editable Canva templates covering posts, stories and a cover image."],
-        ["05", "A short handover call and a written cheat sheet so your team can keep it consistent."]
+        [
+          "01",
+          "A one-page positioning note — who you are for, what you promise, and the words to say it in."
+        ],
+        [
+          "02",
+          "Primary logo plus stacked and icon variants, supplied as SVG, PNG and PDF."
+        ],
+        [
+          "03",
+          "A colour palette and type pairing with hex codes and usage rules."
+        ],
+        [
+          "04",
+          "Twelve editable Canva templates covering posts, stories and a cover image."
+        ],
+        [
+          "05",
+          "A short handover call and a written cheat sheet so your team can keep it consistent."
+        ]
       ],
       "who": "Founders in their first year who need to look credible before they can afford a brand agency.",
       "faq": [
-        ["How many logo revisions are included?", "Two rounds of revisions on the chosen direction. In practice most clients sign off on round one."],
-        ["Do I own the files?", "Yes — full commercial rights transfer to you on final payment, including the source files."]
-      ]
+        [
+          "How many logo revisions are included?",
+          "Two rounds of revisions on the chosen direction. In practice most clients sign off on round one."
+        ],
+        [
+          "Do I own the files?",
+          "Yes — full commercial rights transfer to you on final payment, including the source files."
+        ]
+      ],
+      "payLink": ""
     },
     {
       "slug": "growth-engine",
@@ -56,17 +78,39 @@
         "Performance report"
       ],
       "deliverables": [
-        ["01", "A month-ahead calendar agreed with you before anything is written."],
-        ["02", "Twelve finished pieces — short-form posts, one long-form article, and the graphics to carry them."],
-        ["03", "Scheduling and publishing handled on your accounts, so nothing sits in a draft folder."],
-        ["04", "A plain-English monthly report: what ran, what landed, what we are changing next month."],
-        ["05", "A standing 30-minute monthly review call."]
+        [
+          "01",
+          "A month-ahead calendar agreed with you before anything is written."
+        ],
+        [
+          "02",
+          "Twelve finished pieces — short-form posts, one long-form article, and the graphics to carry them."
+        ],
+        [
+          "03",
+          "Scheduling and publishing handled on your accounts, so nothing sits in a draft folder."
+        ],
+        [
+          "04",
+          "A plain-English monthly report: what ran, what landed, what we are changing next month."
+        ],
+        [
+          "05",
+          "A standing 30-minute monthly review call."
+        ]
       ],
       "who": "Businesses that know they should be publishing consistently and have quietly stopped.",
       "faq": [
-        ["Is there a minimum term?", "Three months, because content needs a run-up before the numbers mean anything. After that it is month to month."],
-        ["Who approves the content?", "You do. Everything sits in a shared board for approval before it goes anywhere near a publish button."]
-      ]
+        [
+          "Is there a minimum term?",
+          "Three months, because content needs a run-up before the numbers mean anything. After that it is month to month."
+        ],
+        [
+          "Who approves the content?",
+          "You do. Everything sits in a shared board for approval before it goes anywhere near a publish button."
+        ]
+      ],
+      "payLink": ""
     },
     {
       "slug": "paid-ads-sprint",
@@ -86,17 +130,39 @@
         "Weekly spend report"
       ],
       "deliverables": [
-        ["01", "Pixel, conversion and GA4 setup checked and fixed before a cent is spent."],
-        ["02", "Three audience sets against three creative angles — nine combinations, tested in sequence."],
-        ["03", "A rewrite of the landing page headline, subhead and call to action to match the winning angle."],
-        ["04", "Weekly one-page report: spend, cost per result, and the decision taken that week."],
-        ["05", "A closing document naming the winning combination and the budget to scale it at."]
+        [
+          "01",
+          "Pixel, conversion and GA4 setup checked and fixed before a cent is spent."
+        ],
+        [
+          "02",
+          "Three audience sets against three creative angles — nine combinations, tested in sequence."
+        ],
+        [
+          "03",
+          "A rewrite of the landing page headline, subhead and call to action to match the winning angle."
+        ],
+        [
+          "04",
+          "Weekly one-page report: spend, cost per result, and the decision taken that week."
+        ],
+        [
+          "05",
+          "A closing document naming the winning combination and the budget to scale it at."
+        ]
       ],
       "who": "Anyone who has boosted a post, seen nothing happen, and wants it done with a method.",
       "faq": [
-        ["Does the price include ad spend?", "No — spend is paid directly to Meta and Google from your own account so you keep the data and the history. Budget from $20 a day is enough to learn something."],
-        ["What if nothing works?", "Then you have saved yourself a year of guessing. The closing document says so plainly and recommends where to look instead."]
-      ]
+        [
+          "Does the price include ad spend?",
+          "No — spend is paid directly to Meta and Google from your own account so you keep the data and the history. Budget from $20 a day is enough to learn something."
+        ],
+        [
+          "What if nothing works?",
+          "Then you have saved yourself a year of guessing. The closing document says so plainly and recommends where to look instead."
+        ]
+      ],
+      "payLink": ""
     },
     {
       "slug": "local-visibility",
@@ -116,51 +182,43 @@
         "Local landing page"
       ],
       "deliverables": [
-        ["01", "Google Business Profile claimed, categorised, described, and filled with photos and services."],
-        ["02", "Twenty directory listings created or corrected so your name, address and phone match everywhere."],
-        ["03", "A review request flow — QR card, SMS wording and a short follow-up sequence."],
-        ["04", "One optimised local landing page with schema markup and embedded map."],
-        ["05", "A ranking snapshot before and 30 days after, so the change is visible."]
+        [
+          "01",
+          "Google Business Profile claimed, categorised, described, and filled with photos and services."
+        ],
+        [
+          "02",
+          "Twenty directory listings created or corrected so your name, address and phone match everywhere."
+        ],
+        [
+          "03",
+          "A review request flow — QR card, SMS wording and a short follow-up sequence."
+        ],
+        [
+          "04",
+          "One optimised local landing page with schema markup and embedded map."
+        ],
+        [
+          "05",
+          "A ranking snapshot before and 30 days after, so the change is visible."
+        ]
       ],
       "who": "Trades, clinics, salons, restaurants — anyone whose customers are within driving distance.",
       "faq": [
-        ["Will I rank number one?", "Nobody can promise a position. What this does is remove every reason Google has to overlook you, which is the part that is actually in our control."],
-        ["Do you need access to my Google account?", "Yes, as a manager on the Business Profile. You stay the owner and can remove access at any time."]
-      ]
-    },
-    {
-      "slug": "conversion-rebuild",
-      "no": "05",
-      "name": "Conversion Rebuild",
-      "tag": "Highest impact",
-      "tagStyle": "quiet",
-      "price": 1680,
-      "priceNote": "one-off project",
-      "turnaround": "3 weeks",
-      "oneLiner": "Same traffic, more enquiries. We fix the page, not the budget.",
-      "summary": "A full teardown and rebuild of your main landing page or sales page — structure, copy, proof, and the mechanics of the form itself — against what the session recordings actually show people doing.",
-      "includes": [
-        "Heatmap + session review",
-        "Full page copy rewrite",
-        "New page build + launch",
-        "30-day A/B test"
+        [
+          "Will I rank number one?",
+          "Nobody can promise a position. What this does is remove every reason Google has to overlook you, which is the part that is actually in our control."
+        ],
+        [
+          "Do you need access to my Google account?",
+          "Yes, as a manager on the Business Profile. You stay the owner and can remove access at any time."
+        ]
       ],
-      "deliverables": [
-        ["01", "Two weeks of heatmap and session recording, summarised into where people hesitate and leave."],
-        ["02", "A complete copy rewrite: headline, structure, objections, proof and call to action."],
-        ["03", "The rebuilt page, coded and live, loading in under two seconds on mobile."],
-        ["04", "A 30-day A/B test against the old page with a clear winner at the end."],
-        ["05", "The research document, so the same thinking can be applied to your other pages."]
-      ],
-      "who": "Businesses already getting visitors who cannot work out why so few of them get in touch.",
-      "faq": [
-        ["What if my site is on Wix or Squarespace?", "Fine. The rebuild is done inside whatever platform you already use, unless you would rather move — in which case say so up front."],
-        ["How is the winner decided?", "On enquiries or sales, never on clicks. The test runs until the difference is real or until 30 days, whichever comes first."]
-      ]
+      "payLink": ""
     },
     {
       "slug": "full-funnel",
-      "no": "06",
+      "no": "05",
       "name": "Full Funnel",
       "tag": "Everything, handled",
       "tagStyle": "signal",
@@ -176,42 +234,115 @@
         "Live reporting dashboard"
       ],
       "deliverables": [
-        ["01", "A quarterly plan with named targets, reviewed and reset every three months."],
-        ["02", "All content, paid campaigns and email handled in one calendar rather than three."],
-        ["03", "Lead capture and follow-up automated so nobody who enquires goes unanswered."],
-        ["04", "A live dashboard you can open any day of the week without asking us for a number."],
-        ["05", "A fortnightly call with the person doing the work, not an account manager."]
+        [
+          "01",
+          "A quarterly plan with named targets, reviewed and reset every three months."
+        ],
+        [
+          "02",
+          "All content, paid campaigns and email handled in one calendar rather than three."
+        ],
+        [
+          "03",
+          "Lead capture and follow-up automated so nobody who enquires goes unanswered."
+        ],
+        [
+          "04",
+          "A live dashboard you can open any day of the week without asking us for a number."
+        ],
+        [
+          "05",
+          "A fortnightly call with the person doing the work, not an account manager."
+        ]
       ],
       "who": "Established businesses spending money on marketing in four different places with no single view of it.",
       "faq": [
-        ["Is this instead of hiring in-house?", "For most businesses under about twenty staff, yes — and considerably cheaper. Past that it works best alongside one internal marketer."],
-        ["Minimum term?", "Six months. Funnel work compounds and anything shorter is not a fair test of it."]
-      ]
+        [
+          "Is this instead of hiring in-house?",
+          "For most businesses under about twenty staff, yes — and considerably cheaper. Past that it works best alongside one internal marketer."
+        ],
+        [
+          "Minimum term?",
+          "Six months. Funnel work compounds and anything shorter is not a fair test of it."
+        ]
+      ],
+      "payLink": ""
     }
   ],
   "faq": [
-    ["How do I pay?", "Every package page has a direct payment link. You click it, pay by card on a secure hosted checkout, and we are notified immediately. No invoices to chase, no cart to fight with."],
-    ["What happens straight after I pay?", "You get a confirmation receipt and a short intake form within a few minutes. Work starts as soon as that comes back — usually the same working day."],
-    ["Can I combine packages?", "Yes, and most clients do. Pay for them separately or ask for a combined link if you would rather make one payment."],
-    ["Are these prices final?", "The listed price is what you pay. If something about your business genuinely sits outside the scope, we say so before taking money, not after."],
-    ["Do you work with my industry?", "Almost certainly. The packages are built around how buying decisions get made, which varies far less between industries than people expect."],
-    ["Can I get a refund?", "If we have not started, yes, in full. Once work is underway we would rather fix the thing you are unhappy with — that has always worked out better for both sides."]
+    [
+      "How do I pay?",
+      "Every package page has a direct payment link. You click it, pay by card on a secure hosted checkout, and we are notified immediately. No invoices to chase, no cart to fight with."
+    ],
+    [
+      "What happens straight after I pay?",
+      "You get a confirmation receipt and a short intake form within a few minutes. Work starts as soon as that comes back — usually the same working day."
+    ],
+    [
+      "Can I combine packages?",
+      "Yes, and most clients do. Pay for them separately or ask for a combined link if you would rather make one payment."
+    ],
+    [
+      "Are these prices final?",
+      "The listed price is what you pay. If something about your business genuinely sits outside the scope, we say so before taking money, not after."
+    ],
+    [
+      "Do you work with my industry?",
+      "Almost certainly. The packages are built around how buying decisions get made, which varies far less between industries than people expect."
+    ],
+    [
+      "Can I get a refund?",
+      "If we have not started, yes, in full. Once work is underway we would rather fix the thing you are unhappy with — that has always worked out better for both sides."
+    ]
   ],
   "stats": [
-    ["6", "Ready-made packages"],
-    ["48h", "Typical kick-off time"],
-    ["92%", "Clients who buy again"],
-    ["11yr", "Average team experience"]
+    [
+      "5",
+      "Ready-made packages"
+    ],
+    [
+      "48h",
+      "Typical kick-off time"
+    ],
+    [
+      "92%",
+      "Clients who buy again"
+    ],
+    [
+      "11yr",
+      "Average team experience"
+    ]
   ],
   "quotes": [
-    ["We had three agencies quote us for a six-month discovery. These people had something live in two weeks for a fraction of it.", "Operations Director, logistics firm"],
-    ["The thing I actually valued was knowing the price before we started. No creeping scope, no surprise invoice.", "Founder, dental practice group"],
-    ["Our enquiry numbers doubled off the same ad budget. The page was the problem the whole time.", "Marketing Lead, B2B software"]
+    [
+      "We had three agencies quote us for a six-month discovery. These people had something live in two weeks for a fraction of it.",
+      "Operations Director, logistics firm"
+    ],
+    [
+      "The thing I actually valued was knowing the price before we started. No creeping scope, no surprise invoice.",
+      "Founder, dental practice group"
+    ],
+    [
+      "Our enquiry numbers doubled off the same ad budget. The page was the problem the whole time.",
+      "Marketing Lead, B2B software"
+    ]
   ],
   "steps": [
-    ["Pick your package", "Read what is in it, see the price, and decide without a sales call. Nothing is hidden behind a form."],
-    ["Pay the link", "A direct, secure card payment on the package page. You are charged once, for exactly what is listed."],
-    ["Fill the intake", "A short form arrives within minutes. It is the only homework you get."],
-    ["We deliver", "Work starts the same working day and lands by the date on the package page."]
+    [
+      "Pick your package",
+      "Read what is in it, see the price, and decide without a sales call. Nothing is hidden behind a form."
+    ],
+    [
+      "Pay the link",
+      "A direct, secure card payment on the package page. You are charged once, for exactly what is listed."
+    ],
+    [
+      "Fill the intake",
+      "A short form arrives within minutes. It is the only homework you get."
+    ],
+    [
+      "We deliver",
+      "Work starts the same working day and lands by the date on the package page."
+    ]
   ]
 }

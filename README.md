@@ -6,7 +6,7 @@ build step required to host it.
 
 **Live preview:** https://anirudhatalmale6-alt.github.io/marketing-packages-preview/
 
-> All copy, prices, package names and brand ("Northline Studio") in this preview
+> All copy, prices, package names and brand ("Mainstream Media") in this preview
 > are placeholders written to show the layout. They are all replaced from one
 > file — see *Changing the content* below.
 

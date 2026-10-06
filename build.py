@@ -713,9 +713,42 @@ def w(path, content):
         fh.write(content)
 
 
+def prune():
+    """Delete pages and artwork for packages that no longer exist.
+
+    Without this, removing a package from packages.json leaves its page on disk.
+    It drops out of the nav and the sitemap but stays reachable by URL, so search
+    engines keep serving a product we no longer sell.
+    """
+    live = {p["slug"] for p in PACKAGES}
+    gone = []
+
+    if os.path.isdir(PKGDIR):
+        for f in os.listdir(PKGDIR):
+            slug, ext = os.path.splitext(f)
+            if ext == ".html" and slug != "checkout" and slug not in live:
+                os.remove(os.path.join(PKGDIR, f))
+                gone.append(f"packages/{f}")
+
+    imgdir = os.path.join(SITE, "assets", "img")
+    if os.path.isdir(imgdir):
+        for f in os.listdir(imgdir):
+            if f == "favicon.svg" or not f.endswith(".svg"):
+                continue
+            slug = f.rsplit("-", 1)[0]
+            if slug not in live:
+                os.remove(os.path.join(imgdir, f))
+                gone.append(f"assets/img/{f}")
+
+    for g in gone:
+        print(f"  pruned {g}")
+    return gone
+
+
 def main():
     import gen_art
     gen_art.build(PACKAGES)
+    prune()
 
     w(os.path.join(SITE, "index.html"), home())
     for i, p in enumerate(PACKAGES):
